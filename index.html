@@ -73,7 +73,7 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <button class="p-2 rounded-full bg-white bg-opacity-20">
+                    <button class="p-2 rounded-full bg-white bg-opacity-20" onclick="showNotifications()">
                         <span class="text-xl">🔔</span>
                     </button>
                     <div class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center notification-badge">
@@ -110,7 +110,7 @@
                         <p class="text-sm text-gray-600">Happy Valley - Dragon Restaurant</p>
                         <p class="text-xs text-gray-500">Check-in: 10:00 AM</p>
                     </div>
-                    <button class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700">
+                    <button class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700" onclick="showTodayDetails()">
                         View Details
                     </button>
                 </div>
@@ -1323,8 +1323,110 @@
 
         // Navigation functions
         function showHome() {
-            // Already on home - could add refresh functionality
             updateNavigation('home');
+            const content = `
+                <!-- Today's Assignment Card -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-400 p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h3 class="font-semibold text-gray-800">Today's Assignment</h3>
+                            <p class="text-sm text-gray-600">Happy Valley - Dragon Restaurant</p>
+                            <p class="text-xs text-gray-500">Check-in: 10:00 AM</p>
+                        </div>
+                        <button class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700" onclick="showTodayDetails()">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main Features Grid -->
+                <div class="grid grid-cols-2 gap-4">
+                    
+                    <!-- News & Updates -->
+                    <div class="card-hover bg-white p-4 rounded-xl shadow-md border border-gray-100" onclick="showNews()">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-2xl">📰</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-800 text-sm">Club News</h3>
+                            <p class="text-xs text-gray-500 mt-1">Latest updates</p>
+                        </div>
+                    </div>
+
+                    <!-- Learning -->
+                    <div class="card-hover bg-white p-4 rounded-xl shadow-md border border-gray-100" onclick="showLearning()">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-2xl">📚</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-800 text-sm">Learning</h3>
+                            <p class="text-xs text-gray-500 mt-1">Training modules</p>
+                        </div>
+                    </div>
+
+                    <!-- Recognition -->
+                    <div class="card-hover bg-white p-4 rounded-xl shadow-md border border-gray-100" onclick="showRecognition()">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-2xl">🏆</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-800 text-sm">Recognition</h3>
+                            <p class="text-xs text-gray-500 mt-1">Awards & honors</p>
+                        </div>
+                    </div>
+
+                    <!-- Rewards -->
+                    <div class="card-hover bg-white p-4 rounded-xl shadow-md border border-gray-100" onclick="showRewards()">
+                        <div class="text-center">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-2xl">🎁</span>
+                            </div>
+                            <h3 class="font-semibold text-gray-800 text-sm">Rewards</h3>
+                            <p class="text-xs text-gray-500 mt-1">Earn points</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="space-y-3">
+                    <h3 class="font-semibold text-gray-800">Quick Actions</h3>
+                    
+                    <button class="w-full bg-white p-4 rounded-xl shadow-md border border-gray-100 flex items-center space-x-4 card-hover" onclick="showQRScanner()">
+                        <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                            <span class="text-xl">📱</span>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h4 class="font-medium text-gray-800">QR Check-in</h4>
+                            <p class="text-sm text-gray-500">Scan to check-in & get uniform</p>
+                        </div>
+                        <span class="text-gray-400">→</span>
+                    </button>
+
+                    <button class="w-full bg-white p-4 rounded-xl shadow-md border border-gray-100 flex items-center space-x-4 card-hover" onclick="showFeedback()">
+                        <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                            <span class="text-xl">💬</span>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h4 class="font-medium text-gray-800">Give Feedback</h4>
+                            <p class="text-sm text-gray-500">Rate your experience</p>
+                        </div>
+                        <span class="text-gray-400">→</span>
+                    </button>
+
+                    <button class="w-full bg-white p-4 rounded-xl shadow-md border border-gray-100 flex items-center space-x-4 card-hover" onclick="showIncidentReport()">
+                        <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                            <span class="text-xl">⚠️</span>
+                        </div>
+                        <div class="flex-1 text-left">
+                            <h4 class="font-medium text-gray-800">Report Issue</h4>
+                            <p class="text-sm text-gray-500">Safety & incident reporting</p>
+                        </div>
+                        <span class="text-gray-400">→</span>
+                    </button>
+                </div>
+            `;
+            document.getElementById('mainContent').innerHTML = content;
         }
 
         function showSchedule() {
@@ -1524,15 +1626,15 @@
                             </div>
                         </div>
                         <div class="space-y-3">
-                            <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
+                            <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between" onclick="showPersonalInfo()">
                                 <span class="text-gray-800">Personal Information</span>
                                 <span class="text-gray-400">→</span>
                             </button>
-                            <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
+                            <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between" onclick="showWorkHistory()">
                                 <span class="text-gray-800">Work History</span>
                                 <span class="text-gray-400">→</span>
                             </button>
-                            <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
+                            <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between" onclick="showSettings()">
                                 <span class="text-gray-800">Settings</span>
                                 <span class="text-gray-400">→</span>
                             </button>
@@ -1549,7 +1651,7 @@
                 <div class="p-4">
                     <h2 class="text-xl font-bold text-gray-800 mb-4">More Options</h2>
                     <div class="space-y-3">
-                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4">
+                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4" onclick="showContactSupport()">
                             <span class="text-2xl">📞</span>
                             <div class="flex-1 text-left">
                                 <h3 class="font-medium text-gray-800">Contact Support</h3>
@@ -1557,7 +1659,7 @@
                             </div>
                             <span class="text-gray-400">→</span>
                         </button>
-                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4">
+                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4" onclick="showPolicies()">
                             <span class="text-2xl">📋</span>
                             <div class="flex-1 text-left">
                                 <h3 class="font-medium text-gray-800">Policies & Guidelines</h3>
@@ -1565,7 +1667,7 @@
                             </div>
                             <span class="text-gray-400">→</span>
                         </button>
-                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4">
+                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4" onclick="showVenueMaps()">
                             <span class="text-2xl">🗺️</span>
                             <div class="flex-1 text-left">
                                 <h3 class="font-medium text-gray-800">Venue Maps</h3>
@@ -1573,7 +1675,7 @@
                             </div>
                             <span class="text-gray-400">→</span>
                         </button>
-                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4">
+                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4" onclick="showAppSettings()">
                             <span class="text-2xl">⚙️</span>
                             <div class="flex-1 text-left">
                                 <h3 class="font-medium text-gray-800">App Settings</h3>
@@ -1585,6 +1687,713 @@
                 </div>
             `;
             document.getElementById('mainContent').innerHTML = content;
+        }
+
+        function showTodayDetails() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">Today's Assignment Details</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    
+                    <!-- Assignment Overview -->
+                    <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl p-4 mb-6">
+                        <div class="text-center mb-4">
+                            <h3 class="text-lg font-bold">Dragon Restaurant</h3>
+                            <p class="text-sm opacity-90">Happy Valley Racecourse • Section A</p>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 text-center">
+                            <div>
+                                <div class="text-2xl font-bold">10:00 AM</div>
+                                <div class="text-xs opacity-90">Check-in Time</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold">8 hrs</div>
+                                <div class="text-xs opacity-90">Shift Duration</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shift Details -->
+                    <div class="space-y-4 mb-6">
+                        <div class="bg-white rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-semibold text-gray-800 mb-3">Shift Information</h3>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Position:</span>
+                                    <span class="font-medium">Food Service Assistant</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Supervisor:</span>
+                                    <span class="font-medium">Sarah Chen</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Break Time:</span>
+                                    <span class="font-medium">2:00 PM - 2:30 PM</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Uniform:</span>
+                                    <span class="font-medium text-green-600">Available at check-in</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tasks for Today -->
+                        <div class="bg-white rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-semibold text-gray-800 mb-3">Today's Tasks</h3>
+                            <div class="space-y-2">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-700">Customer service and order taking</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-700">Food preparation assistance</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-700">Maintain cleanliness standards</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span class="text-sm text-gray-700">Cash handling (if trained)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Important Notes -->
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2 flex items-center">
+                                <span class="text-yellow-600 mr-2">⚠️</span>
+                                Important Notes
+                            </h3>
+                            <ul class="text-sm text-gray-700 space-y-1">
+                                <li>• Arrive 15 minutes early for briefing</li>
+                                <li>• Facial recognition check-in required</li>
+                                <li>• Special dietary menu available today</li>
+                                <li>• Expected busy period: 12:00-2:00 PM</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-3">
+                        <button class="w-full bg-green-600 text-white py-3 rounded-lg font-medium flex items-center justify-center space-x-2" onclick="showWayfinder()">
+                            <span>🗺️</span>
+                            <span>Get Directions</span>
+                        </button>
+                        <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium flex items-center justify-center space-x-2" onclick="showQRScanner()">
+                            <span>📱</span>
+                            <span>QR Check-in</span>
+                        </button>
+                        <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg" onclick="closeModal()">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function showNotifications() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">🔔 Notifications</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    
+                    <!-- Notification Summary -->
+                    <div class="bg-gradient-to-r from-red-500 to-pink-500 text-white rounded-xl p-4 mb-6">
+                        <div class="text-center">
+                            <div class="text-3xl font-bold mb-1">3</div>
+                            <div class="text-sm opacity-90">Unread Notifications</div>
+                        </div>
+                    </div>
+
+                    <!-- Notifications List -->
+                    <div class="space-y-3 mb-6">
+                        <!-- Urgent Notification -->
+                        <div class="bg-red-50 border-l-4 border-red-500 rounded-lg p-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                    <span class="text-red-600 text-sm">⚠️</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <h3 class="font-semibold text-gray-800">Safety Training Due</h3>
+                                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">URGENT</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-2">Complete mandatory safety training within 3 days to continue working.</p>
+                                    <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                        <span>2 hours ago</span>
+                                        <button class="text-red-600 font-medium" onclick="showLearning(); closeModal();">Complete Now →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Shift Reminder -->
+                        <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                    <span class="text-blue-600 text-sm">📅</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <h3 class="font-semibold text-gray-800">Tomorrow's Shift Reminder</h3>
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">REMINDER</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-2">Phoenix Lounge, Sha Tin • 2:00 PM - 10:00 PM</p>
+                                    <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                        <span>4 hours ago</span>
+                                        <button class="text-blue-600 font-medium" onclick="showSchedule(); closeModal();">View Details →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Achievement Notification -->
+                        <div class="bg-green-50 border-l-4 border-green-500 rounded-lg p-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                    <span class="text-green-600 text-sm">🏆</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <h3 class="font-semibold text-gray-800">Achievement Unlocked!</h3>
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">REWARD</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 mb-2">Perfect Attendance - 15 days! You earned 20 bonus points.</p>
+                                    <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                        <span>1 day ago</span>
+                                        <button class="text-green-600 font-medium" onclick="showRewards(); closeModal();">View Rewards →</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Read Notifications -->
+                        <div class="border-t border-gray-200 pt-4">
+                            <h3 class="font-medium text-gray-600 mb-3">Earlier</h3>
+                            
+                            <div class="bg-gray-50 rounded-lg p-4 opacity-75">
+                                <div class="flex items-start space-x-3">
+                                    <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center">
+                                        <span class="text-gray-500 text-sm">📰</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h3 class="font-medium text-gray-700">New Club News Available</h3>
+                                        <p class="text-sm text-gray-500 mb-1">Racing Season 2024-25 updates and announcements</p>
+                                        <span class="text-xs text-gray-400">3 days ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-2">
+                        <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg text-sm" onclick="markAllRead()">
+                            Mark All as Read
+                        </button>
+                        <button class="w-full bg-green-600 text-white py-3 rounded-lg font-medium" onclick="closeModal()">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function markAllRead() {
+            // Update notification badge
+            const badge = document.querySelector('.notification-badge');
+            badge.style.display = 'none';
+            
+            const content = `
+                <div class="p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">✅</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-2">All Caught Up!</h2>
+                    <p class="text-gray-600 mb-4">All notifications have been marked as read.</p>
+                    <button onclick="closeModal()" class="w-full bg-green-600 text-white py-3 rounded-lg font-medium">
+                        Done
+                    </button>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function showPersonalInfo() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">👤 Personal Information</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-semibold text-gray-800 mb-3">Basic Information</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Full Name:</span>
+                                    <span class="font-medium">Alex Wong</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Employee ID:</span>
+                                    <span class="font-medium">PT-2024-0127</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Position:</span>
+                                    <span class="font-medium">Part-time Staff</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Start Date:</span>
+                                    <span class="font-medium">Nov 12, 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-semibold text-gray-800 mb-3">Contact Details</h3>
+                            <div class="space-y-3">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Phone:</span>
+                                    <span class="font-medium">+852 9123 4567</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Email:</span>
+                                    <span class="font-medium">alex.wong@student.edu.hk</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Emergency Contact:</span>
+                                    <span class="font-medium">+852 9876 5432</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-green-600 text-white py-3 rounded-lg font-medium">
+                            Update Information
+                        </button>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function showWorkHistory() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">📊 Work History</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl p-4">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold mb-1">15</div>
+                                <div class="text-sm opacity-90">Total Days Worked</div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <h3 class="font-semibold text-gray-800">Recent Shifts</h3>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-gray-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium text-gray-800">Nov 26, 2024</h4>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Completed</span>
+                                </div>
+                                <div class="text-sm text-gray-600 space-y-1">
+                                    <p>Happy Valley • Dragon Restaurant</p>
+                                    <p>10:00 AM - 6:00 PM (8 hours)</p>
+                                    <p>Rating: ⭐⭐⭐⭐⭐ (5.0)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-gray-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium text-gray-800">Nov 24, 2024</h4>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Completed</span>
+                                </div>
+                                <div class="text-sm text-gray-600 space-y-1">
+                                    <p>Sha Tin • Phoenix Lounge</p>
+                                    <p>2:00 PM - 10:00 PM (8 hours)</p>
+                                    <p>Rating: ⭐⭐⭐⭐⭐ (4.8)</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-gray-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-medium text-gray-800">Nov 22, 2024</h4>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Completed</span>
+                                </div>
+                                <div class="text-sm text-gray-600 space-y-1">
+                                    <p>Happy Valley • Members' Lounge</p>
+                                    <p>6:00 PM - 12:00 AM (6 hours)</p>
+                                    <p>Rating: ⭐⭐⭐⭐⭐ (4.9)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="w-full bg-blue-600 text-white py-3 rounded-lg font-medium">
+                            View Full History
+                        </button>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function showSettings() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">⚙️ Settings</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-semibold text-gray-800 mb-3">Notifications</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Shift Reminders</span>
+                                    <div class="w-12 h-6 bg-green-500 rounded-full relative">
+                                        <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Achievement Alerts</span>
+                                    <div class="w-12 h-6 bg-green-500 rounded-full relative">
+                                        <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">News Updates</span>
+                                    <div class="w-12 h-6 bg-gray-300 rounded-full relative">
+                                        <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-semibold text-gray-800 mb-3">Privacy</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Location Services</span>
+                                    <div class="w-12 h-6 bg-green-500 rounded-full relative">
+                                        <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Facial Recognition</span>
+                                    <div class="w-12 h-6 bg-green-500 rounded-full relative">
+                                        <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-2">
+                            <button class="w-full bg-gray-100 text-gray-700 py-3 rounded-lg">
+                                Change Password
+                            </button>
+                            <button class="w-full bg-red-600 text-white py-3 rounded-lg">
+                                Sign Out
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function showContactSupport() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">📞 Contact Support</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">24/7 Support Hotline</h3>
+                            <p class="text-2xl font-bold text-green-600">+852 1234 5678</p>
+                            <p class="text-sm text-gray-600 mt-1">Available in Cantonese, English & Mandarin</p>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <h3 class="font-semibold text-gray-800">Common Issues</h3>
+                            
+                            <button class="w-full bg-white p-4 rounded-lg border border-gray-100 text-left">
+                                <h4 class="font-medium text-gray-800">Can't check-in with QR code</h4>
+                                <p class="text-sm text-gray-500">Troubleshoot QR scanner issues</p>
+                            </button>
+                            
+                            <button class="w-full bg-white p-4 rounded-lg border border-gray-100 text-left">
+                                <h4 class="font-medium text-gray-800">Uniform not available</h4>
+                                <p class="text-sm text-gray-500">Report uniform collection problems</p>
+                            </button>
+                            
+                            <button class="w-full bg-white p-4 rounded-lg border border-gray-100 text-left">
+                                <h4 class="font-medium text-gray-800">Schedule conflicts</h4>
+                                <p class="text-sm text-gray-500">Request shift changes or report conflicts</p>
+                            </button>
+                            
+                            <button class="w-full bg-white p-4 rounded-lg border border-gray-100 text-left">
+                                <h4 class="font-medium text-gray-800">Payment inquiries</h4>
+                                <p class="text-sm text-gray-500">Questions about wages and payments</p>
+                            </button>
+                        </div>
+                        
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">Email Support</h3>
+                            <p class="text-blue-600 font-medium">support@hkjc.org.hk</p>
+                            <p class="text-sm text-gray-600 mt-1">Response within 24 hours</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function showPolicies() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">📋 Policies & Guidelines</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="bg-red-50 border-l-4 border-red-500 rounded-lg p-4">
+                            <h3 class="font-semibold text-gray-800 mb-2">⚠️ Safety First</h3>
+                            <p class="text-sm text-gray-600">All safety protocols must be followed at all times</p>
+                        </div>
+                        
+                        <button class="w-full bg-white p-4 rounded-lg border border-gray-100 text-left">
+                            <h4 class="font-medium text-gray-800">Code of Conduct</h4>
+                            <p class="text-sm text-gray-500">Professional behavior and ethics guidelines</p>
+                        </button>
+                        
+                        <button class="w-full bg-white p-4 rounded-lg border border-gray-100 text-left">
+                            <h4 class="font-medium text-gray-800">Dress Code & Uniform Policy</h4>
+                            <p class="text-sm text-gray-500">Appearance standards and uniform requirements</p>
+                        </button>
+                        
+                        <button class="w-full bg-white p-4 rounded-lg border border-gray-100 text-left">
+                            <h4 class="font-medium text-gray-800">Health & Safety Procedures</h4>
+                            <p class="text-sm text-gray-500">Emergency procedures and safety protocols</p>
+                        </button>
+                        
+                        <button class="w-full bg-white p-4 rounded-lg border border-gray-100 text-left">
+                            <h4 class="font-medium text-gray-800">Customer Service Standards</h4>
+                            <p class="text-sm text-gray-500">Service excellence and customer interaction guidelines</p>
+                        </button>
+                        
+                        <button class="w-full bg-white p-4 rounded-lg border border-gray-100 text-left">
+                            <h4 class="font-medium text-gray-800">Attendance & Punctuality</h4>
+                            <p class="text-sm text-gray-500">Check-in procedures and attendance requirements</p>
+                        </div>
+                        
+                        <button class="w-full bg-white p-4 rounded-lg border border-gray-100 text-left">
+                            <h4 class="font-medium text-gray-800">Data Privacy Policy</h4>
+                            <p class="text-sm text-gray-500">How we protect and use your personal information</p>
+                        </button>
+                        
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mt-4">
+                            <p class="text-sm text-yellow-800">
+                                <strong>Note:</strong> All policies are updated regularly. Please review them monthly to stay informed of any changes.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function showVenueMaps() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">🗺️ Venue Maps</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            <button class="bg-green-600 text-white p-4 rounded-lg text-center">
+                                <div class="text-2xl mb-2">🏇</div>
+                                <div class="font-medium">Happy Valley</div>
+                                <div class="text-xs opacity-90">Racecourse</div>
+                            </button>
+                            <button class="bg-blue-600 text-white p-4 rounded-lg text-center">
+                                <div class="text-2xl mb-2">🏟️</div>
+                                <div class="font-medium">Sha Tin</div>
+                                <div class="text-xs opacity-90">Racecourse</div>
+                            </button>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <h3 class="font-semibold text-gray-800">Happy Valley Locations</h3>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-gray-100">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Dragon Restaurant</h4>
+                                        <p class="text-sm text-gray-500">Ground Floor, East Wing</p>
+                                    </div>
+                                    <button class="bg-green-100 text-green-600 px-3 py-1 rounded text-sm" onclick="showWayfinder()">
+                                        Navigate
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-gray-100">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Members' Lounge</h4>
+                                        <p class="text-sm text-gray-500">2nd Floor, Central</p>
+                                    </div>
+                                    <button class="bg-green-100 text-green-600 px-3 py-1 rounded text-sm">
+                                        Navigate
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-gray-100">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Staff Facilities</h4>
+                                        <p class="text-sm text-gray-500">Basement Level</p>
+                                    </div>
+                                    <button class="bg-green-100 text-green-600 px-3 py-1 rounded text-sm">
+                                        Navigate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <h3 class="font-semibold text-gray-800">Sha Tin Locations</h3>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-gray-100">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Phoenix Lounge</h4>
+                                        <p class="text-sm text-gray-500">3rd Floor, North Wing</p>
+                                    </div>
+                                    <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded text-sm">
+                                        Navigate
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-4 border border-gray-100">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Grandstand Café</h4>
+                                        <p class="text-sm text-gray-500">Ground Floor, South</p>
+                                    </div>
+                                    <button class="bg-blue-100 text-blue-600 px-3 py-1 rounded text-sm">
+                                        Navigate
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function showAppSettings() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">⚙️ App Settings</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-semibold text-gray-800 mb-3">Language & Region</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Language</span>
+                                    <select class="bg-gray-50 border border-gray-300 rounded px-3 py-1 text-sm">
+                                        <option>English</option>
+                                        <option>繁體中文</option>
+                                        <option>简体中文</option>
+                                    </select>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Time Format</span>
+                                    <select class="bg-gray-50 border border-gray-300 rounded px-3 py-1 text-sm">
+                                        <option>12-hour</option>
+                                        <option>24-hour</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-semibold text-gray-800 mb-3">Display</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Dark Mode</span>
+                                    <div class="w-12 h-6 bg-gray-300 rounded-full relative">
+                                        <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5"></div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-gray-700">Large Text</span>
+                                    <div class="w-12 h-6 bg-gray-300 rounded-full relative">
+                                        <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 left-0.5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-semibold text-gray-800 mb-3">Data & Storage</h3>
+                            <div class="space-y-3">
+                                <button class="w-full text-left p-2 hover:bg-gray-50 rounded">
+                                    <div class="font-medium text-gray-800">Clear Cache</div>
+                                    <div class="text-sm text-gray-500">Free up storage space</div>
+                                </button>
+                                <button class="w-full text-left p-2 hover:bg-gray-50 rounded">
+                                    <div class="font-medium text-gray-800">Download for Offline</div>
+                                    <div class="text-sm text-gray-500">Save maps and schedules offline</div>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 border border-gray-100">
+                            <h3 class="font-semibold text-gray-800 mb-3">About</h3>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Version:</span>
+                                    <span class="font-medium">2.1.0</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-gray-600">Last Updated:</span>
+                                    <span class="font-medium">Nov 25, 2024</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            showModal(content);
         }
 
         function updateNavigation(activeTab) {
@@ -1603,5 +2412,5 @@
             }
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d917cb84697c70',t:'MTc1NDkyOTU2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d92b6481d1df6e',t:'MTc1NDkzMDM3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
