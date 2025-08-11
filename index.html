@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HKJC Work Experience</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Hong Kong Jockey Club Brand Colors */
+        :root {
+            --hkjc-green: #006B3C;
+            --hkjc-gold: #D4AF37;
+            --hkjc-dark-green: #004D2A;
+            --hkjc-light-green: #E8F5E8;
+        }
+        
+        .hkjc-gradient {
+            background: linear-gradient(135deg, var(--hkjc-green) 0%, var(--hkjc-dark-green) 100%);
+        }
+        
+        .gold-accent {
+            color: var(--hkjc-gold);
+        }
+        
+        .notification-badge {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 107, 60, 0.15);
+        }
+        
+        .smiley {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .smiley:hover {
+            transform: scale(1.2);
+        }
+        
+        .selected-smiley {
+            transform: scale(1.3);
+            filter: drop-shadow(0 0 8px var(--hkjc-gold));
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Mobile App Container -->
+    <div class="max-w-md mx-auto bg-white min-h-screen shadow-xl">
+        
+        <!-- Header -->
+        <div class="hkjc-gradient text-white p-4 relative">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                        <span class="text-green-800 font-bold text-lg">🏇</span>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold">HKJC Work Experience</h1>
+                        <p class="text-sm opacity-90">Welcome, Alex Wong</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <button class="p-2 rounded-full bg-white bg-opacity-20">
+                        <span class="text-xl">🔔</span>
+                    </button>
+                    <div class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center notification-badge">
+                        <span class="text-xs text-white font-bold">3</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Stats -->
+            <div class="mt-4 grid grid-cols-3 gap-4">
+                <div class="text-center">
+                    <div class="gold-accent font-bold text-xl">127</div>
+                    <div class="text-xs opacity-90">Points</div>
+                </div>
+                <div class="text-center">
+                    <div class="gold-accent font-bold text-xl">4.8</div>
+                    <div class="text-xs opacity-90">Rating</div>
+                </div>
+                <div class="text-center">
+                    <div class="gold-accent font-bold text-xl">15</div>
+                    <div class="text-xs opacity-90">Days</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="p-4 space-y-4" id="mainContent">
+            
+            <!-- Today's Assignment Card -->
+            <div class="bg-gradient-to-r from-yellow-50 to-orange-50 border-l-4 border-yellow-400 p-4 rounded-lg">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <h3 class="font-semibold text-gray-800">Today's Assignment</h3>
+                        <p class="text-sm text-gray-600">Happy Valley - Dragon Restaurant</p>
+                        <p class="text-xs text-gray-500">Check-in: 10:00 AM</p>
+                    </div>
+                    <button class="bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-700">
+                        View Details
+                    </button>
+                </div>
+            </div>
+
+            <!-- Main Features Grid -->
+            <div class="grid grid-cols-2 gap-4">
+                
+                <!-- News & Updates -->
+                <div class="card-hover bg-white p-4 rounded-xl shadow-md border border-gray-100" onclick="showNews()">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-2xl">📰</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 text-sm">Club News</h3>
+                        <p class="text-xs text-gray-500 mt-1">Latest updates</p>
+                    </div>
+                </div>
+
+                <!-- Learning -->
+                <div class="card-hover bg-white p-4 rounded-xl shadow-md border border-gray-100" onclick="showLearning()">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-2xl">📚</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 text-sm">Learning</h3>
+                        <p class="text-xs text-gray-500 mt-1">Training modules</p>
+                    </div>
+                </div>
+
+                <!-- Recognition -->
+                <div class="card-hover bg-white p-4 rounded-xl shadow-md border border-gray-100" onclick="showRecognition()">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-2xl">🏆</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 text-sm">Recognition</h3>
+                        <p class="text-xs text-gray-500 mt-1">Awards & honors</p>
+                    </div>
+                </div>
+
+                <!-- Rewards -->
+                <div class="card-hover bg-white p-4 rounded-xl shadow-md border border-gray-100" onclick="showRewards()">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <span class="text-2xl">🎁</span>
+                        </div>
+                        <h3 class="font-semibold text-gray-800 text-sm">Rewards</h3>
+                        <p class="text-xs text-gray-500 mt-1">Earn points</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="space-y-3">
+                <h3 class="font-semibold text-gray-800">Quick Actions</h3>
+                
+                <button class="w-full bg-white p-4 rounded-xl shadow-md border border-gray-100 flex items-center space-x-4 card-hover" onclick="showQRScanner()">
+                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                        <span class="text-xl">📱</span>
+                    </div>
+                    <div class="flex-1 text-left">
+                        <h4 class="font-medium text-gray-800">QR Check-in</h4>
+                        <p class="text-sm text-gray-500">Scan to check-in & get uniform</p>
+                    </div>
+                    <span class="text-gray-400">→</span>
+                </button>
+
+                <button class="w-full bg-white p-4 rounded-xl shadow-md border border-gray-100 flex items-center space-x-4 card-hover" onclick="showFeedback()">
+                    <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                        <span class="text-xl">💬</span>
+                    </div>
+                    <div class="flex-1 text-left">
+                        <h4 class="font-medium text-gray-800">Give Feedback</h4>
+                        <p class="text-sm text-gray-500">Rate your experience</p>
+                    </div>
+                    <span class="text-gray-400">→</span>
+                </button>
+
+                <button class="w-full bg-white p-4 rounded-xl shadow-md border border-gray-100 flex items-center space-x-4 card-hover" onclick="showIncidentReport()">
+                    <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                        <span class="text-xl">⚠️</span>
+                    </div>
+                    <div class="flex-1 text-left">
+                        <h4 class="font-medium text-gray-800">Report Issue</h4>
+                        <p class="text-sm text-gray-500">Safety & incident reporting</p>
+                    </div>
+                    <span class="text-gray-400">→</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white border-t border-gray-200">
+            <div class="grid grid-cols-5 py-2">
+                <button class="flex flex-col items-center py-2 text-green-600" onclick="showHome()">
+                    <span class="text-xl mb-1">🏠</span>
+                    <span class="text-xs">Home</span>
+                </button>
+                <button class="flex flex-col items-center py-2 text-gray-400" onclick="showSchedule()">
+                    <span class="text-xl mb-1">📅</span>
+                    <span class="text-xs">Schedule</span>
+                </button>
+                <button class="flex flex-col items-center py-2 text-gray-400" onclick="showLearning()">
+                    <span class="text-xl mb-1">📚</span>
+                    <span class="text-xs">Learn</span>
+                </button>
+                <button class="flex flex-col items-center py-2 text-gray-400" onclick="showProfile()">
+                    <span class="text-xl mb-1">👤</span>
+                    <span class="text-xs">Profile</span>
+                </button>
+                <button class="flex flex-col items-center py-2 text-gray-400" onclick="showMore()">
+                    <span class="text-xl mb-1">⋯</span>
+                    <span class="text-xs">More</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Padding for bottom nav -->
+        <div class="h-20"></div>
+    </div>
+
+    <!-- Modal Overlay -->
+    <div id="modalOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+                <div id="modalContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function showModal(content) {
+            document.getElementById('modalContent').innerHTML = content;
+            document.getElementById('modalOverlay').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.add('hidden');
+        }
+
+        // Click outside modal to close
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // Feature functions
+        function showNews() {
+            updateNavigation('news');
+            const content = `
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">📰 Club News & Updates</h2>
+                        <button onclick="showHome()" class="text-gray-400 hover:text-gray-600">← Back</button>
+                    </div>
+                    
+                    <!-- Featured News -->
+                    <div class="bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl p-4 mb-4">
+                        <div class="flex items-center mb-2">
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded text-xs">FEATURED</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">🏆 Racing Season 2024-25 Begins!</h3>
+                        <p class="text-sm opacity-90 mb-3">Join us for an exciting new season with enhanced safety protocols and improved facilities for all staff members.</p>
+                        <button class="bg-white text-green-600 px-4 py-2 rounded-lg text-sm font-medium">Read More</button>
+                    </div>
+
+                    <!-- News Categories -->
+                    <div class="flex space-x-2 mb-4 overflow-x-auto">
+                        <button class="bg-green-600 text-white px-4 py-2 rounded-full text-sm whitespace-nowrap">All</button>
+                        <button class="bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm whitespace-nowrap">Safety</button>
+                        <button class="bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm whitespace-nowrap">Events</button>
+                        <button class="bg-gray-100 text-gray-600 px-4 py-2 rounded-full text-sm whitespace-nowrap">Training</button>
+                    </div>
+
+                    <!-- News List -->
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center">
+                                    <span class="text-xl">⚠️</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">URGENT</span>
+                                        <span class="text-xs text-gray-500">2 hours ago</span>
+                                    </div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">New Safety Protocols - Mandatory Reading</h3>
+                                    <p class="text-sm text-gray-600 mb-2">Updated safety guidelines for all restaurant and hospitality staff. Please review before your next shift.</p>
+                                    <button class="text-green-600 text-sm font-medium">View Details →</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center">
+                                    <span class="text-xl">🎉</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">EVENT</span>
+                                        <span class="text-xs text-gray-500">1 day ago</span>
+                                    </div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">Monthly Staff Recognition Ceremony</h3>
+                                    <p class="text-sm text-gray-600 mb-2">Join us this Friday at 3 PM in the main hall to celebrate our outstanding team members.</p>
+                                    <button class="text-green-600 text-sm font-medium">RSVP →</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <span class="text-xl">📚</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">TRAINING</span>
+                                        <span class="text-xs text-gray-500">3 days ago</span>
+                                    </div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">New Customer Service Training Available</h3>
+                                    <p class="text-sm text-gray-600 mb-2">Enhanced training modules now available in the Learning section. Earn bonus points for completion!</p>
+                                    <button class="text-green-600 text-sm font-medium">Start Learning →</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                    <span class="text-xl">🍽️</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">UPDATE</span>
+                                        <span class="text-xs text-gray-500">5 days ago</span>
+                                    </div>
+                                    <h3 class="font-semibold text-gray-800 mb-1">New Menu Items at Staff Canteen</h3>
+                                    <p class="text-sm text-gray-600 mb-2">Try our new healthy options and international cuisine. Special discounts for part-time staff!</p>
+                                    <button class="text-green-600 text-sm font-medium">View Menu →</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('mainContent').innerHTML = content;
+        }
+
+        function showLearning() {
+            updateNavigation('learn');
+            const content = `
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">📚 Learning Hub</h2>
+                        <button onclick="showHome()" class="text-gray-400 hover:text-gray-600">← Back</button>
+                    </div>
+
+                    <!-- Learning Progress Overview -->
+                    <div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl p-4 mb-6">
+                        <h3 class="font-bold text-lg mb-2">Your Learning Journey</h3>
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-2xl font-bold">5</div>
+                                <div class="text-xs opacity-90">Completed</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold">2</div>
+                                <div class="text-xs opacity-90">In Progress</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold">85%</div>
+                                <div class="text-xs opacity-90">Overall Score</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Urgent/Due Soon -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-800 mb-3 flex items-center">
+                            <span class="text-red-500 mr-2">⚠️</span>
+                            Action Required
+                        </h3>
+                        <div class="bg-red-50 border-l-4 border-red-500 rounded-lg p-4">
+                            <div class="flex items-center justify-between">
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-800">Safety & Compliance Training</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Mandatory annual training - Due in 3 days</p>
+                                    <div class="w-full bg-gray-200 rounded-full h-2">
+                                        <div class="bg-red-500 h-2 rounded-full" style="width: 30%"></div>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-1">30% complete • 45 min remaining</p>
+                                </div>
+                                <button class="bg-red-500 text-white px-4 py-2 rounded-lg text-sm font-medium ml-4">
+                                    Continue
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Training Categories -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-800 mb-3">Training Categories</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100 text-center">
+                                <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <span class="text-2xl">🛡️</span>
+                                </div>
+                                <h4 class="font-medium text-gray-800 text-sm">Safety & Compliance</h4>
+                                <p class="text-xs text-gray-500">3 modules</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100 text-center">
+                                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <span class="text-2xl">👥</span>
+                                </div>
+                                <h4 class="font-medium text-gray-800 text-sm">Customer Service</h4>
+                                <p class="text-xs text-gray-500">4 modules</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100 text-center">
+                                <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <span class="text-2xl">🍽️</span>
+                                </div>
+                                <h4 class="font-medium text-gray-800 text-sm">Food Handling</h4>
+                                <p class="text-xs text-gray-500">2 modules</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100 text-center">
+                                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                    <span class="text-2xl">🏇</span>
+                                </div>
+                                <h4 class="font-medium text-gray-800 text-sm">HKJC Culture</h4>
+                                <p class="text-xs text-gray-500">3 modules</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Modules -->
+                    <div class="space-y-4">
+                        <h3 class="font-semibold text-gray-800">All Training Modules</h3>
+                        
+                        <!-- Completed Module -->
+                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                                    <span class="text-green-600">✓</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-800">Customer Service Excellence</h4>
+                                    <p class="text-sm text-gray-600">New staff orientation</p>
+                                    <div class="flex items-center space-x-2 mt-1">
+                                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                            <div class="bg-green-500 h-1.5 rounded-full" style="width: 100%"></div>
+                                        </div>
+                                        <span class="text-xs text-green-600 font-medium">Complete</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4 mt-2 text-xs text-gray-500">
+                                        <span>⏱️ 30 min</span>
+                                        <span>🏆 +25 points earned</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- In Progress Module -->
+                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                                    <span class="text-orange-600">⏳</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-800">Food Safety Fundamentals</h4>
+                                    <p class="text-sm text-gray-600">Essential food handling practices</p>
+                                    <div class="flex items-center space-x-2 mt-1">
+                                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                            <div class="bg-orange-500 h-1.5 rounded-full" style="width: 60%"></div>
+                                        </div>
+                                        <span class="text-xs text-orange-600 font-medium">60%</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4 mt-2 text-xs text-gray-500">
+                                        <span>⏱️ 15 min left</span>
+                                        <span>🎯 20 points available</span>
+                                    </div>
+                                </div>
+                                <button class="bg-orange-500 text-white px-3 py-1 rounded text-xs">Continue</button>
+                            </div>
+                        </div>
+
+                        <!-- Available Module -->
+                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <span class="text-blue-600">📖</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-800">HKJC Heritage & Values</h4>
+                                    <p class="text-sm text-gray-600">Learn about our rich history and culture</p>
+                                    <div class="flex items-center space-x-2 mt-1">
+                                        <div class="w-full bg-gray-200 rounded-full h-1.5">
+                                            <div class="bg-blue-500 h-1.5 rounded-full" style="width: 0%"></div>
+                                        </div>
+                                        <span class="text-xs text-gray-500">Not started</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4 mt-2 text-xs text-gray-500">
+                                        <span>⏱️ 25 min</span>
+                                        <span>🎯 15 points available</span>
+                                    </div>
+                                </div>
+                                <button class="bg-blue-500 text-white px-3 py-1 rounded text-xs">Start</button>
+                            </div>
+                        </div>
+
+                        <!-- Locked Module -->
+                        <div class="bg-gray-50 rounded-lg p-4 shadow-sm border border-gray-100 opacity-60">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center">
+                                    <span class="text-gray-400">🔒</span>
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-gray-600">Advanced Customer Relations</h4>
+                                    <p class="text-sm text-gray-500">Complete basic training first</p>
+                                    <div class="flex items-center space-x-4 mt-2 text-xs text-gray-400">
+                                        <span>⏱️ 40 min</span>
+                                        <span>🎯 30 points available</span>
+                                    </div>
+                                </div>
+                                <span class="text-xs text-gray-400 px-3 py-1 border border-gray-300 rounded">Locked</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('mainContent').innerHTML = content;
+        }
+
+        function showRecognition() {
+            updateNavigation('recognition');
+            const content = `
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">🏆 Recognition</h2>
+                        <button onclick="showHome()" class="text-gray-400 hover:text-gray-600">← Back</button>
+                    </div>
+
+                    <!-- Current Status Banner -->
+                    <div class="bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-xl p-4 mb-6">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-3">
+                                <span class="text-3xl">🌟</span>
+                            </div>
+                            <h3 class="text-lg font-bold mb-1">Staff of the Month Nominee</h3>
+                            <p class="text-sm opacity-90 mb-3">November 2024 • Top 5 Finalist</p>
+                            <div class="bg-white bg-opacity-20 rounded-lg p-2">
+                                <p class="text-xs">Winner announcement: Dec 1st</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Overview -->
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mb-6">
+                        <h3 class="font-semibold text-gray-800 mb-4">Your Performance Ratings</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">😊</div>
+                                <div class="text-sm font-medium text-gray-800">Appearance</div>
+                                <div class="text-xs text-green-600">Excellent</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">😍</div>
+                                <div class="text-sm font-medium text-gray-800">Work Attitude</div>
+                                <div class="text-xs text-green-600">Outstanding</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">😊</div>
+                                <div class="text-sm font-medium text-gray-800">Performance</div>
+                                <div class="text-xs text-green-600">Excellent</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="text-3xl mb-2">😊</div>
+                                <div class="text-sm font-medium text-gray-800">Teamwork</div>
+                                <div class="text-xs text-green-600">Excellent</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <div class="text-2xl font-bold text-green-600">4.8/5.0</div>
+                            <div class="text-sm text-gray-600">Overall Rating</div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Achievements -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-800 mb-3">Recent Achievements</h3>
+                        <div class="space-y-3">
+                            <div class="bg-green-50 border-l-4 border-green-500 rounded-lg p-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🎯</span>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Perfect Attendance</h4>
+                                        <p class="text-sm text-gray-600">15 consecutive days without absence</p>
+                                        <span class="text-xs text-green-600">+20 bonus points</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">⭐</span>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Customer Service Excellence</h4>
+                                        <p class="text-sm text-gray-600">Received 5-star rating from guest</p>
+                                        <span class="text-xs text-blue-600">+15 bonus points</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-purple-50 border-l-4 border-purple-500 rounded-lg p-3">
+                                <div class="flex items-center space-x-3">
+                                    <span class="text-2xl">🛡️</span>
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Safety Champion</h4>
+                                        <p class="text-sm text-gray-600">Completed all safety training modules</p>
+                                        <span class="text-xs text-purple-600">+10 bonus points</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Awards & Honors -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-800 mb-3">Awards & Honors</h3>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white rounded-lg p-3 shadow-sm border border-gray-100 text-center">
+                                <div class="text-2xl mb-2">🥇</div>
+                                <div class="text-sm font-medium text-gray-800">Employee of the Week</div>
+                                <div class="text-xs text-gray-500">Week 45, 2024</div>
+                            </div>
+                            <div class="bg-white rounded-lg p-3 shadow-sm border border-gray-100 text-center">
+                                <div class="text-2xl mb-2">🌟</div>
+                                <div class="text-sm font-medium text-gray-800">Rising Star</div>
+                                <div class="text-xs text-gray-500">Oct 2024</div>
+                            </div>
+                            <div class="bg-white rounded-lg p-3 shadow-sm border border-gray-100 text-center">
+                                <div class="text-2xl mb-2">🤝</div>
+                                <div class="text-sm font-medium text-gray-800">Team Player</div>
+                                <div class="text-xs text-gray-500">Sep 2024</div>
+                            </div>
+                            <div class="bg-white rounded-lg p-3 shadow-sm border border-gray-100 text-center">
+                                <div class="text-2xl mb-2">📚</div>
+                                <div class="text-sm font-medium text-gray-800">Learning Champion</div>
+                                <div class="text-xs text-gray-500">Aug 2024</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Feedback from Supervisors -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-800 mb-3">Recent Feedback</h3>
+                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                            <div class="flex items-start space-x-3">
+                                <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                    <span class="text-green-600">👤</span>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="flex items-center space-x-2 mb-1">
+                                        <h4 class="font-medium text-gray-800">Manager Sarah Chen</h4>
+                                        <span class="text-xs text-gray-500">2 days ago</span>
+                                    </div>
+                                    <p class="text-sm text-gray-600 italic">"Alex consistently demonstrates excellent customer service skills and maintains a positive attitude even during busy periods. A valuable team member!"</p>
+                                    <div class="flex items-center space-x-1 mt-2">
+                                        <span class="text-yellow-400">⭐⭐⭐⭐⭐</span>
+                                        <span class="text-xs text-gray-500">5/5 rating</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Goals & Progress -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">Goals & Progress</h3>
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm text-gray-700">Monthly Attendance Goal</span>
+                                    <span class="text-sm font-medium text-green-600">100%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm text-gray-700">Customer Satisfaction</span>
+                                    <span class="text-sm font-medium text-blue-600">96%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 96%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-sm text-gray-700">Training Completion</span>
+                                    <span class="text-sm font-medium text-purple-600">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-purple-500 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('mainContent').innerHTML = content;
+        }
+
+        function showRewards() {
+            updateNavigation('rewards');
+            const content = `
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">🎁 Rewards & Gamification</h2>
+                        <button onclick="showHome()" class="text-gray-400 hover:text-gray-600">← Back</button>
+                    </div>
+
+                    <!-- Points Balance -->
+                    <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl p-4 mb-6">
+                        <div class="text-center">
+                            <div class="text-4xl font-bold mb-2">127</div>
+                            <div class="text-lg mb-1">Available Points</div>
+                            <div class="text-sm opacity-90">Rank: Gold Member</div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mt-4 text-center">
+                            <div>
+                                <div class="text-lg font-bold">15</div>
+                                <div class="text-xs opacity-90">This Week</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold">67</div>
+                                <div class="text-xs opacity-90">This Month</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold">245</div>
+                                <div class="text-xs opacity-90">Total Earned</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Level Progress -->
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="font-semibold text-gray-800">Level Progress</h3>
+                            <span class="text-sm text-gray-600">Level 3</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="text-2xl">🥇</span>
+                            <div class="flex-1">
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="bg-gradient-to-r from-yellow-400 to-orange-500 h-3 rounded-full" style="width: 75%"></div>
+                                </div>
+                                <div class="flex justify-between text-xs text-gray-500 mt-1">
+                                    <span>245/300 points</span>
+                                    <span>55 points to Level 4</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Earnings -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-800 mb-3">Recent Point Earnings</h3>
+                        <div class="space-y-3">
+                            <div class="bg-green-50 border-l-4 border-green-500 rounded-lg p-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl">🎯</span>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">Perfect Attendance Bonus</h4>
+                                            <p class="text-sm text-gray-600">15 consecutive days</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-green-600 font-bold">+20 pts</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl">📚</span>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">Training Module Completed</h4>
+                                            <p class="text-sm text-gray-600">Customer Service Excellence</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-blue-600 font-bold">+25 pts</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-purple-50 border-l-4 border-purple-500 rounded-lg p-3">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <span class="text-xl">⭐</span>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">5-Star Customer Rating</h4>
+                                            <p class="text-sm text-gray-600">Excellent service feedback</p>
+                                        </div>
+                                    </div>
+                                    <span class="text-purple-600 font-bold">+15 pts</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Available Rewards -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-800 mb-3">Available Rewards</h3>
+                        <div class="space-y-3">
+                            <!-- Affordable Rewards -->
+                            <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                                        <span class="text-2xl">☕</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-800">Coffee Voucher</h4>
+                                        <p class="text-sm text-gray-600">Any beverage at Club Café</p>
+                                        <div class="flex items-center space-x-2 mt-1">
+                                            <span class="text-lg font-bold text-orange-600">30 pts</span>
+                                            <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">Available</span>
+                                        </div>
+                                    </div>
+                                    <button class="bg-orange-500 text-white px-4 py-2 rounded-lg text-sm font-medium" onclick="redeemReward('coffee')">
+                                        Redeem
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                                        <span class="text-2xl">🍽️</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-800">Meal Voucher</h4>
+                                        <p class="text-sm text-gray-600">Staff canteen lunch or dinner</p>
+                                        <div class="flex items-center space-x-2 mt-1">
+                                            <span class="text-lg font-bold text-green-600">50 pts</span>
+                                            <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">Available</span>
+                                        </div>
+                                    </div>
+                                    <button class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium" onclick="redeemReward('meal')">
+                                        Redeem
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Premium Rewards -->
+                            <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                        <span class="text-2xl">🎫</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-800">Race Day VIP Pass</h4>
+                                        <p class="text-sm text-gray-600">Special viewing area access</p>
+                                        <div class="flex items-center space-x-2 mt-1">
+                                            <span class="text-lg font-bold text-blue-600">100 pts</span>
+                                            <span class="text-xs text-green-600 bg-green-100 px-2 py-1 rounded">Available</span>
+                                        </div>
+                                    </div>
+                                    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg text-sm font-medium" onclick="redeemReward('vip')">
+                                        Redeem
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Locked Rewards -->
+                            <div class="bg-gray-50 rounded-lg p-4 shadow-sm border border-gray-100 opacity-60">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+                                        <span class="text-2xl">🏆</span>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-gray-600">Premium Dining Experience</h4>
+                                        <p class="text-sm text-gray-500">Fine dining restaurant voucher</p>
+                                        <div class="flex items-center space-x-2 mt-1">
+                                            <span class="text-lg font-bold text-gray-500">200 pts</span>
+                                            <span class="text-xs text-red-600 bg-red-100 px-2 py-1 rounded">Need 73 more points</span>
+                                        </div>
+                                    </div>
+                                    <span class="text-gray-400 px-4 py-2 border border-gray-300 rounded-lg text-sm">Locked</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Challenges & Bonuses -->
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">🎯 Active Challenges</h3>
+                        <div class="space-y-3">
+                            <div class="bg-white rounded-lg p-3">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Weekly Warrior</h4>
+                                        <p class="text-sm text-gray-600">Work 5 days this week</p>
+                                        <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                                            <div class="bg-purple-500 h-2 rounded-full" style="width: 80%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-500 mt-1">4/5 days complete</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold text-purple-600">+30 pts</div>
+                                        <div class="text-xs text-gray-500">Bonus</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white rounded-lg p-3">
+                                <div class="flex items-center justify-between">
+                                    <div>
+                                        <h4 class="font-medium text-gray-800">Learning Enthusiast</h4>
+                                        <p class="text-sm text-gray-600">Complete 3 training modules</p>
+                                        <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                                            <div class="bg-blue-500 h-2 rounded-full" style="width: 33%"></div>
+                                        </div>
+                                        <p class="text-xs text-gray-500 mt-1">1/3 modules complete</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-lg font-bold text-blue-600">+50 pts</div>
+                                        <div class="text-xs text-gray-500">Bonus</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('mainContent').innerHTML = content;
+        }
+
+        function showQRScanner() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">QR Check-in</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-48 h-48 bg-gray-100 rounded-lg mx-auto mb-4 flex items-center justify-center">
+                            <div class="border-4 border-green-600 w-32 h-32 rounded-lg relative">
+                                <div class="absolute top-0 left-0 w-6 h-6 border-t-4 border-l-4 border-green-600"></div>
+                                <div class="absolute top-0 right-0 w-6 h-6 border-t-4 border-r-4 border-green-600"></div>
+                                <div class="absolute bottom-0 left-0 w-6 h-6 border-b-4 border-l-4 border-green-600"></div>
+                                <div class="absolute bottom-0 right-0 w-6 h-6 border-b-4 border-r-4 border-green-600"></div>
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="text-2xl">📱</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Position QR code within the frame</p>
+                        <div class="space-y-3">
+                            <button class="w-full bg-green-600 text-white py-3 rounded-lg font-medium" onclick="simulateQRScan()">
+                                Simulate QR Scan
+                            </button>
+                            <p class="text-xs text-gray-500">Scan to check-in, get uniform, and access meals</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function simulateQRScan() {
+            const content = `
+                <div class="p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">✅</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-2">Check-in Successful!</h2>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Location:</span>
+                                <span class="font-medium">Dragon Restaurant</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Time:</span>
+                                <span class="font-medium">10:15 AM</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Uniform:</span>
+                                <span class="font-medium text-green-600">Collected</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="closeModal()" class="w-full bg-green-600 text-white py-3 rounded-lg font-medium">
+                        Continue
+                    </button>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function showFeedback() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">Rate Your Experience</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-medium text-gray-800 mb-3">How was the food today?</h3>
+                            <div class="flex justify-center space-x-4">
+                                <span class="smiley" onclick="selectSmiley(this, 'food')">😞</span>
+                                <span class="smiley" onclick="selectSmiley(this, 'food')">😐</span>
+                                <span class="smiley" onclick="selectSmiley(this, 'food')">😊</span>
+                                <span class="smiley" onclick="selectSmiley(this, 'food')">😍</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-medium text-gray-800 mb-3">Work environment rating</h3>
+                            <div class="flex justify-center space-x-4">
+                                <span class="smiley" onclick="selectSmiley(this, 'environment')">😞</span>
+                                <span class="smiley" onclick="selectSmiley(this, 'environment')">😐</span>
+                                <span class="smiley" onclick="selectSmiley(this, 'environment')">😊</span>
+                                <span class="smiley" onclick="selectSmiley(this, 'environment')">😍</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Additional comments</label>
+                            <textarea class="w-full p-3 border border-gray-300 rounded-lg resize-none" rows="3" placeholder="Share your thoughts..."></textarea>
+                        </div>
+                        <button class="w-full bg-green-600 text-white py-3 rounded-lg font-medium" onclick="submitFeedback()">
+                            Submit Feedback
+                        </button>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function selectSmiley(element, category) {
+            // Remove selected class from siblings
+            const siblings = element.parentNode.children;
+            for (let sibling of siblings) {
+                sibling.classList.remove('selected-smiley');
+            }
+            // Add selected class to clicked element
+            element.classList.add('selected-smiley');
+        }
+
+        function submitFeedback() {
+            const content = `
+                <div class="p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">🙏</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-2">Thank You!</h2>
+                    <p class="text-gray-600 mb-4">Your feedback helps us improve the work experience for everyone.</p>
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+                        <p class="text-sm text-yellow-800">+5 points earned for providing feedback!</p>
+                    </div>
+                    <button onclick="closeModal()" class="w-full bg-green-600 text-white py-3 rounded-lg font-medium">
+                        Done
+                    </button>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function showIncidentReport() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">Report Issue</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Issue Type</label>
+                            <select class="w-full p-3 border border-gray-300 rounded-lg">
+                                <option>Select issue type</option>
+                                <option>Safety Hazard</option>
+                                <option>Equipment Problem</option>
+                                <option>Workplace Incident</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                            <input type="text" class="w-full p-3 border border-gray-300 rounded-lg" placeholder="Where did this occur?">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                            <textarea class="w-full p-3 border border-gray-300 rounded-lg resize-none" rows="4" placeholder="Please describe the issue in detail..."></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Urgency Level</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button class="p-2 border border-green-300 text-green-700 rounded-lg text-sm" onclick="selectUrgency(this, 'low')">Low</button>
+                                <button class="p-2 border border-yellow-300 text-yellow-700 rounded-lg text-sm" onclick="selectUrgency(this, 'medium')">Medium</button>
+                                <button class="p-2 border border-red-300 text-red-700 rounded-lg text-sm" onclick="selectUrgency(this, 'high')">High</button>
+                            </div>
+                        </div>
+                        <button class="w-full bg-red-600 text-white py-3 rounded-lg font-medium" onclick="submitReport()">
+                            Submit Report
+                        </button>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function selectUrgency(element, level) {
+            // Remove selected styling from siblings
+            const siblings = element.parentNode.children;
+            for (let sibling of siblings) {
+                sibling.classList.remove('bg-red-600', 'bg-yellow-600', 'bg-green-600', 'text-white');
+                sibling.classList.add('border-gray-300', 'text-gray-700');
+            }
+            
+            // Add selected styling
+            element.classList.remove('border-gray-300', 'text-gray-700');
+            if (level === 'high') {
+                element.classList.add('bg-red-600', 'text-white');
+            } else if (level === 'medium') {
+                element.classList.add('bg-yellow-600', 'text-white');
+            } else {
+                element.classList.add('bg-green-600', 'text-white');
+            }
+        }
+
+        function submitReport() {
+            const content = `
+                <div class="p-6 text-center">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">📋</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-2">Report Submitted</h2>
+                    <p class="text-gray-600 mb-4">Your report has been sent to the safety team. Reference #: SR-2024-1127</p>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+                        <p class="text-sm text-blue-800">You will receive updates on the resolution progress.</p>
+                    </div>
+                    <button onclick="closeModal()" class="w-full bg-green-600 text-white py-3 rounded-lg font-medium">
+                        Done
+                    </button>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function redeemReward(type) {
+            let rewardName, points, icon;
+            switch(type) {
+                case 'coffee':
+                    rewardName = 'Coffee Voucher';
+                    points = 30;
+                    icon = '☕';
+                    break;
+                case 'meal':
+                    rewardName = 'Meal Voucher';
+                    points = 50;
+                    icon = '🍽️';
+                    break;
+                case 'vip':
+                    rewardName = 'Race Day VIP Pass';
+                    points = 100;
+                    icon = '🎫';
+                    break;
+            }
+            
+            const content = `
+                <div class="p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">${icon}</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-2">Reward Redeemed!</h2>
+                    <p class="text-gray-600 mb-4">You've successfully redeemed: <strong>${rewardName}</strong></p>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                        <p class="text-sm text-green-800">-${points} points deducted from your balance</p>
+                        <p class="text-sm text-green-800">New balance: ${127 - points} points</p>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-3 mb-4">
+                        <p class="text-sm text-blue-800">Your voucher code: <strong>HKJC${Math.random().toString(36).substr(2, 6).toUpperCase()}</strong></p>
+                        <p class="text-xs text-blue-600 mt-1">Show this code at the venue to redeem</p>
+                    </div>
+                    <button onclick="closeModal()" class="w-full bg-green-600 text-white py-3 rounded-lg font-medium">
+                        Done
+                    </button>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function showWayfinder() {
+            const content = `
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">🗺️ Wayfinder</h2>
+                        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
+                    </div>
+                    
+                    <!-- Destination Info -->
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                        <h3 class="font-semibold text-gray-800 mb-2">Your Destination</h3>
+                        <div class="space-y-1">
+                            <p class="text-sm text-gray-700"><strong>Venue:</strong> Happy Valley Racecourse</p>
+                            <p class="text-sm text-gray-700"><strong>Location:</strong> Dragon Restaurant - Section A</p>
+                            <p class="text-sm text-gray-700"><strong>Floor:</strong> Ground Level, East Wing</p>
+                        </div>
+                    </div>
+
+                    <!-- Map Placeholder -->
+                    <div class="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center relative overflow-hidden">
+                        <!-- Simple venue map representation -->
+                        <div class="absolute inset-0 p-4">
+                            <div class="w-full h-full border-2 border-gray-300 rounded relative">
+                                <!-- Main entrance -->
+                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-2 bg-blue-500"></div>
+                                <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-xs text-blue-600">Main Entrance</div>
+                                
+                                <!-- Dragon Restaurant -->
+                                <div class="absolute top-4 right-4 w-16 h-12 bg-red-200 border-2 border-red-400 rounded flex items-center justify-center">
+                                    <span class="text-xs font-bold text-red-700">Dragon</span>
+                                </div>
+                                
+                                <!-- Your location dot -->
+                                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-blue-600 rounded-full animate-pulse"></div>
+                                <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 text-xs text-blue-600">You</div>
+                                
+                                <!-- Path line -->
+                                <svg class="absolute inset-0 w-full h-full">
+                                    <path d="M 50% 85% Q 75% 60% 85% 25%" stroke="#10B981" stroke-width="3" fill="none" stroke-dasharray="5,5">
+                                        <animate attributeName="stroke-dashoffset" values="0;10" dur="1s" repeatCount="indefinite"/>
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Navigation Steps -->
+                    <div class="space-y-3 mb-4">
+                        <h3 class="font-semibold text-gray-800">Step-by-Step Directions</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-3 p-2 bg-blue-50 rounded-lg">
+                                <div class="w-6 h-6 bg-blue-500 text-white rounded-full flex items-center justify-center text-xs font-bold">1</div>
+                                <p class="text-sm text-gray-700">Enter through Main Entrance</p>
+                            </div>
+                            <div class="flex items-center space-x-3 p-2 bg-gray-50 rounded-lg">
+                                <div class="w-6 h-6 bg-gray-400 text-white rounded-full flex items-center justify-center text-xs font-bold">2</div>
+                                <p class="text-sm text-gray-700">Head towards East Wing</p>
+                            </div>
+                            <div class="flex items-center space-x-3 p-2 bg-gray-50 rounded-lg">
+                                <div class="w-6 h-6 bg-gray-400 text-white rounded-full flex items-center justify-center text-xs font-bold">3</div>
+                                <p class="text-sm text-gray-700">Look for Dragon Restaurant signage</p>
+                            </div>
+                            <div class="flex items-center space-x-3 p-2 bg-gray-50 rounded-lg">
+                                <div class="w-6 h-6 bg-gray-400 text-white rounded-full flex items-center justify-center text-xs font-bold">4</div>
+                                <p class="text-sm text-gray-700">Report to Section A supervisor</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Info -->
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4">
+                        <div class="flex items-center space-x-2 mb-2">
+                            <span class="text-yellow-600">⏱️</span>
+                            <span class="font-medium text-gray-800">Estimated Walk Time: 3-5 minutes</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-yellow-600">📍</span>
+                            <span class="text-sm text-gray-600">Look for the red dragon logo above the entrance</span>
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="space-y-2">
+                        <button class="w-full bg-green-600 text-white py-3 rounded-lg font-medium" onclick="startNavigation()">
+                            Start Navigation
+                        </button>
+                        <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg" onclick="closeModal()">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        function startNavigation() {
+            const content = `
+                <div class="p-6 text-center">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">🧭</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-gray-800 mb-2">Navigation Started</h2>
+                    <p class="text-gray-600 mb-4">Follow the directions to Dragon Restaurant - Section A</p>
+                    <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                        <p class="text-sm text-green-800">GPS navigation activated</p>
+                        <p class="text-sm text-green-800">You'll receive turn-by-turn directions</p>
+                    </div>
+                    <button onclick="closeModal()" class="w-full bg-green-600 text-white py-3 rounded-lg font-medium">
+                        Got it!
+                    </button>
+                </div>
+            `;
+            showModal(content);
+        }
+
+        // Navigation functions
+        function showHome() {
+            // Already on home - could add refresh functionality
+            updateNavigation('home');
+        }
+
+        function showSchedule() {
+            updateNavigation('schedule');
+            const content = `
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">📅 Work Notifications</h2>
+                        <button onclick="showHome()" class="text-gray-400 hover:text-gray-600">← Back</button>
+                    </div>
+
+                    <!-- Today's Assignment -->
+                    <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl p-4 mb-6">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="text-lg font-bold">Today's Assignment</h3>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded text-xs">ACTIVE</span>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xl">🏢</span>
+                                <span class="font-medium">Happy Valley Racecourse</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xl">🍽️</span>
+                                <span>Dragon Restaurant - Section A</span>
+                            </div>
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xl">⏰</span>
+                                <span>10:00 AM - 6:00 PM (8 hours)</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 flex space-x-2">
+                            <button class="bg-white text-green-600 px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2" onclick="showWayfinder()">
+                                <span>🗺️</span>
+                                <span>Get Directions</span>
+                            </button>
+                            <button class="bg-white bg-opacity-20 text-white px-4 py-2 rounded-lg text-sm font-medium">
+                                Check-in Ready
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Facial Recognition Status -->
+                    <div class="bg-white rounded-xl p-4 shadow-sm border border-gray-100 mb-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                <span class="text-2xl">👤</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold text-gray-800">Facial Recognition</h3>
+                                <p class="text-sm text-gray-600">Ready for check-in authentication</p>
+                            </div>
+                            <div class="text-center">
+                                <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                    <span class="text-green-600 text-sm">✓</span>
+                                </div>
+                                <span class="text-xs text-green-600">Active</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Shifts -->
+                    <div class="mb-6">
+                        <h3 class="font-semibold text-gray-800 mb-3">Upcoming Shifts</h3>
+                        <div class="space-y-3">
+                            <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                                            <span class="text-xl">🌅</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">Tomorrow - Nov 28</h4>
+                                            <p class="text-sm text-gray-600">Sha Tin • Phoenix Lounge</p>
+                                            <p class="text-xs text-gray-500">2:00 PM - 10:00 PM</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Tomorrow</span>
+                                        <p class="text-xs text-gray-500 mt-1">Reminder at 12 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                                            <span class="text-xl">🌙</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">Friday - Nov 29</h4>
+                                            <p class="text-sm text-gray-600">Happy Valley • Members' Lounge</p>
+                                            <p class="text-xs text-gray-500">6:00 PM - 12:00 AM</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Race Night</span>
+                                        <p class="text-xs text-gray-500 mt-1">Special event</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                                            <span class="text-xl">☀️</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-semibold text-gray-800">Saturday - Nov 30</h4>
+                                            <p class="text-sm text-gray-600">Sha Tin • Grandstand Café</p>
+                                            <p class="text-xs text-gray-500">11:00 AM - 7:00 PM</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Weekend</span>
+                                        <p class="text-xs text-gray-500 mt-1">Busy day</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notification Settings -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h3 class="font-semibold text-gray-800 mb-3">Notification Preferences</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Shift Reminders</h4>
+                                    <p class="text-sm text-gray-600">Get notified before your shift</p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-600">2 hours before</span>
+                                    <div class="w-12 h-6 bg-green-500 rounded-full relative">
+                                        <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Location Updates</h4>
+                                    <p class="text-sm text-gray-600">Receive venue and section details</p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-600">On</span>
+                                    <div class="w-12 h-6 bg-green-500 rounded-full relative">
+                                        <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Wayfinding</h4>
+                                    <p class="text-sm text-gray-600">Auto-navigation to work location</p>
+                                </div>
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-600">On</span>
+                                    <div class="w-12 h-6 bg-green-500 rounded-full relative">
+                                        <div class="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('mainContent').innerHTML = content;
+        }
+
+        function showProfile() {
+            updateNavigation('profile');
+            const content = `
+                <div class="p-4">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-3xl">👤</span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-800">Alex Wong</h2>
+                        <p class="text-sm text-gray-600">Part-time Staff</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
+                            <h3 class="font-semibold text-gray-800 mb-3">Performance Summary</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-green-600">4.8</div>
+                                    <div class="text-xs text-gray-500">Average Rating</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-2xl font-bold text-blue-600">15</div>
+                                    <div class="text-xs text-gray-500">Days Worked</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
+                                <span class="text-gray-800">Personal Information</span>
+                                <span class="text-gray-400">→</span>
+                            </button>
+                            <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
+                                <span class="text-gray-800">Work History</span>
+                                <span class="text-gray-400">→</span>
+                            </button>
+                            <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center justify-between">
+                                <span class="text-gray-800">Settings</span>
+                                <span class="text-gray-400">→</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            document.getElementById('mainContent').innerHTML = content;
+        }
+
+        function showMore() {
+            updateNavigation('more');
+            const content = `
+                <div class="p-4">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">More Options</h2>
+                    <div class="space-y-3">
+                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4">
+                            <span class="text-2xl">📞</span>
+                            <div class="flex-1 text-left">
+                                <h3 class="font-medium text-gray-800">Contact Support</h3>
+                                <p class="text-sm text-gray-500">Get help with any issues</p>
+                            </div>
+                            <span class="text-gray-400">→</span>
+                        </button>
+                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4">
+                            <span class="text-2xl">📋</span>
+                            <div class="flex-1 text-left">
+                                <h3 class="font-medium text-gray-800">Policies & Guidelines</h3>
+                                <p class="text-sm text-gray-500">Club policies and procedures</p>
+                            </div>
+                            <span class="text-gray-400">→</span>
+                        </button>
+                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4">
+                            <span class="text-2xl">🗺️</span>
+                            <div class="flex-1 text-left">
+                                <h3 class="font-medium text-gray-800">Venue Maps</h3>
+                                <p class="text-sm text-gray-500">Navigate Happy Valley & Sha Tin</p>
+                            </div>
+                            <span class="text-gray-400">→</span>
+                        </button>
+                        <button class="w-full bg-white p-4 rounded-lg shadow-sm border border-gray-100 flex items-center space-x-4">
+                            <span class="text-2xl">⚙️</span>
+                            <div class="flex-1 text-left">
+                                <h3 class="font-medium text-gray-800">App Settings</h3>
+                                <p class="text-sm text-gray-500">Notifications and preferences</p>
+                            </div>
+                            <span class="text-gray-400">→</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('mainContent').innerHTML = content;
+        }
+
+        function updateNavigation(activeTab) {
+            // Update navigation styling
+            const navButtons = document.querySelectorAll('.fixed.bottom-0 button');
+            navButtons.forEach(button => {
+                button.classList.remove('text-green-600');
+                button.classList.add('text-gray-400');
+            });
+            
+            // Set active tab
+            const activeIndex = ['home', 'schedule', 'learn', 'profile', 'more'].indexOf(activeTab);
+            if (activeIndex !== -1) {
+                navButtons[activeIndex].classList.remove('text-gray-400');
+                navButtons[activeIndex].classList.add('text-green-600');
+            }
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d917cb84697c70',t:'MTc1NDkyOTU2OS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
