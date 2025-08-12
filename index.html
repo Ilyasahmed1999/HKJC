@@ -6,20 +6,23 @@
     <title>OneJC Community Hub</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Hong Kong Jockey Club Brand Colors */
+        /* ServiceNow Mobile Brand Colors - Darker Blue Theme */
         :root {
-            --hkjc-green: #006B3C;
-            --hkjc-gold: #D4AF37;
-            --hkjc-dark-green: #004D2A;
-            --hkjc-light-green: #E8F5E8;
+            --sn-primary: #003D7A;
+            --sn-secondary: #002952;
+            --sn-accent: #5caaf6;
+            --sn-light-blue: #E1EAF4;
+            --sn-success: #28A745;
+            --sn-warning: #FFC107;
+            --sn-danger: #DC3545;
         }
         
-        .hkjc-gradient {
-            background: linear-gradient(135deg, var(--hkjc-green) 0%, var(--hkjc-dark-green) 100%);
+        .sn-gradient {
+            background: linear-gradient(135deg, var(--sn-primary) 0%, var(--sn-secondary) 100%);
         }
         
-        .gold-accent {
-            color: var(--hkjc-gold);
+        .accent-color {
+            color: var(--sn-accent);
         }
         
         .notification-badge {
@@ -37,7 +40,7 @@
         
         .card-hover:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 107, 60, 0.15);
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.15);
         }
         
         .smiley {
@@ -61,21 +64,23 @@
     <div class="max-w-md mx-auto bg-white min-h-screen shadow-xl">
         
         <!-- Header -->
-        <div class="hkjc-gradient text-white p-4 relative">
+        <div class="sn-gradient text-white px-4 py-3 relative">
             <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-3">
+                <div class="flex items-center space-x-4">
                     <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-opacity-90 transition-all duration-200 p-1" onclick="showHome()">
-                        <!-- HKJC Logo Version 1 - Man riding horse -->
- <span class="text-green-800 font-bold text-lg">🏇</span>
+                        <!-- Official HKJC Logo -->
+                        <img src="image.png" alt="HKJC Logo" class="w-8 h-8 rounded-full object-cover">
                     </button>
-                    <div>
-                        <h1 class="text-lg font-bold">OneJC Community Hub</h1>
-                        <p class="text-sm opacity-90">Welcome, Alex Wong</p>
+                    <div class="flex flex-col">
+                        <h1 class="text-xl font-bold leading-tight">OneJC Community Hub</h1>
+                        <p class="text-sm opacity-90 leading-tight">Welcome, Alex Wong</p>
                     </div>
                 </div>
                 <div class="relative">
-                    <button class="p-2 rounded-full bg-white bg-opacity-20" onclick="showNotifications()">
-                        <span class="text-xl">🔔</span>
+                    <button class="w-10 h-10 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition-all duration-200 flex items-center justify-center" onclick="showNotifications()">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/>
+                        </svg>
                     </button>
                     <div class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center notification-badge">
                         <span class="text-xs text-white font-bold">3</span>
@@ -86,15 +91,15 @@
             <!-- Quick Stats -->
             <div class="mt-4 grid grid-cols-3 gap-4">
                 <div class="text-center">
-                    <div class="gold-accent font-bold text-xl">127</div>
+                    <div class="accent-color font-bold text-xl">127</div>
                     <div class="text-xs opacity-90">Points</div>
                 </div>
                 <div class="text-center">
-                    <div class="gold-accent font-bold text-xl">4.8</div>
+                    <div class="accent-color font-bold text-xl">4.8</div>
                     <div class="text-xs opacity-90">Rating</div>
                 </div>
                 <div class="text-center">
-                    <div class="gold-accent font-bold text-xl">15</div>
+                    <div class="accent-color font-bold text-xl">15</div>
                     <div class="text-xs opacity-90">Days</div>
                 </div>
             </div>
@@ -228,27 +233,47 @@
         </div>
 
         <!-- Bottom Navigation -->
-        <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white border-t border-gray-200">
-            <div class="grid grid-cols-5 py-2">
-                <button class="flex flex-col items-center py-2 text-green-600" onclick="showHome()">
-                    <span class="text-xl mb-1">🏠</span>
-                    <span class="text-xs">Home</span>
+        <div class="fixed bottom-0 left-1/2 transform -translate-x-1/2 w-full max-w-md bg-white border-t border-gray-100 shadow-lg">
+            <div class="grid grid-cols-5 px-2 py-1">
+                <button class="flex flex-col items-center py-3 px-2 rounded-lg bg-blue-50 text-blue-600 transition-all duration-200" onclick="showHome()">
+                    <div class="w-6 h-6 flex items-center justify-center mb-1">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-medium">Home</span>
                 </button>
-                <button class="flex flex-col items-center py-2 text-gray-400" onclick="showSchedule()">
-                    <span class="text-xl mb-1">📅</span>
-                    <span class="text-xs">Schedule</span>
+                <button class="flex flex-col items-center py-3 px-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-all duration-200" onclick="showSchedule()">
+                    <div class="w-6 h-6 flex items-center justify-center mb-1">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-medium">Tasks</span>
                 </button>
-                <button class="flex flex-col items-center py-2 text-gray-400" onclick="showLearning()">
-                    <span class="text-xl mb-1">📚</span>
-                    <span class="text-xs">Learn</span>
+                <button class="flex flex-col items-center py-3 px-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-all duration-200" onclick="showLearning()">
+                    <div class="w-6 h-6 flex items-center justify-center mb-1">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-medium">Learn</span>
                 </button>
-                <button class="flex flex-col items-center py-2 text-gray-400" onclick="showProfile()">
-                    <span class="text-xl mb-1">👤</span>
-                    <span class="text-xs">Profile</span>
+                <button class="flex flex-col items-center py-3 px-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-all duration-200" onclick="showProfile()">
+                    <div class="w-6 h-6 flex items-center justify-center mb-1">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-medium">Profile</span>
                 </button>
-                <button class="flex flex-col items-center py-2 text-gray-400" onclick="showMore()">
-                    <span class="text-xl mb-1">⋯</span>
-                    <span class="text-xs">More</span>
+                <button class="flex flex-col items-center py-3 px-2 rounded-lg text-gray-500 hover:text-gray-700 hover:bg-gray-50 transition-all duration-200" onclick="showMore()">
+                    <div class="w-6 h-6 flex items-center justify-center mb-1">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <span class="text-xs font-medium">Settings</span>
                 </button>
             </div>
         </div>
@@ -3038,15 +3063,19 @@ startxref
             // Update navigation styling
             const navButtons = document.querySelectorAll('.fixed.bottom-0 button');
             navButtons.forEach(button => {
-                button.classList.remove('text-green-600');
-                button.classList.add('text-gray-400');
+                // Remove active state classes
+                button.classList.remove('bg-blue-50', 'text-blue-600');
+                // Add inactive state classes
+                button.classList.add('text-gray-500');
             });
             
             // Set active tab
             const activeIndex = ['home', 'schedule', 'learn', 'profile', 'more'].indexOf(activeTab);
             if (activeIndex !== -1) {
-                navButtons[activeIndex].classList.remove('text-gray-400');
-                navButtons[activeIndex].classList.add('text-green-600');
+                // Remove inactive state classes
+                navButtons[activeIndex].classList.remove('text-gray-500');
+                // Add active state classes
+                navButtons[activeIndex].classList.add('bg-blue-50', 'text-blue-600');
             }
         }
     </script>
