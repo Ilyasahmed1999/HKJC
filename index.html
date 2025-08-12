@@ -64,9 +64,10 @@
         <div class="hkjc-gradient text-white p-4 relative">
             <div class="flex items-center justify-between">
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                        <span class="text-green-800 font-bold text-lg">🏇</span>
-                    </div>
+                    <button class="w-10 h-10 bg-white rounded-full flex items-center justify-center hover:bg-opacity-90 transition-all duration-200 p-1" onclick="showHome()">
+                        <!-- HKJC Logo Version 1 - Man riding horse -->
+ <span class="text-green-800 font-bold text-lg">🏇</span>
+                    </button>
                     <div>
                         <h1 class="text-lg font-bold">OneJC Community Hub</h1>
                         <p class="text-sm opacity-90">Welcome, Alex Wong</p>
@@ -2022,7 +2023,7 @@
             showModal(content);
         }
 
-        function downloadPaySlip() {
+        function downloadPaySlip(selectedMonth = 'November 2024') {
             // Create PDF content
             const pdfContent = `
 %PDF-1.4
@@ -2119,8 +2120,9 @@ startxref
             const blob = new Blob([pdfContent], { type: 'application/pdf' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
+            const monthYear = selectedMonth.replace(' ', '_');
             a.href = url;
-            a.download = 'PaySlip_November_2024_AlexWong.pdf';
+            a.download = `PaySlip_${monthYear}_AlexWong.pdf`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -2135,7 +2137,7 @@ startxref
                     <h2 class="text-xl font-bold text-gray-800 mb-2">Download Started!</h2>
                     <p class="text-gray-600 mb-4">Your pay slip PDF has been downloaded successfully.</p>
                     <div class="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
-                        <p class="text-sm text-green-800">File: PaySlip_November_2024_AlexWong.pdf</p>
+                        <p class="text-sm text-green-800">File: PaySlip_${monthYear}_AlexWong.pdf</p>
                     </div>
                     <button onclick="closeModal()" class="w-full bg-green-600 text-white py-3 rounded-lg font-medium">
                         Done
@@ -2268,7 +2270,79 @@ startxref
             showModal(content);
         }
 
-        function showPaySlip() {
+        function showPaySlip(selectedMonth = 'November 2024') {
+            // Define payslip data for different months
+            const payslipData = {
+                'November 2024': {
+                    totalEarnings: 'HK$4,800',
+                    daysWorked: 15,
+                    totalHours: 120,
+                    hourlyRate: 'HK$40',
+                    basePay: 'HK$4,800',
+                    performanceBonus: 'HK$200',
+                    attendanceBonus: 'HK$150',
+                    grossPay: 'HK$5,150',
+                    mpfContribution: '-HK$257',
+                    uniformDeposit: '-HK$50',
+                    totalDeductions: '-HK$307',
+                    netPay: 'HK$4,843',
+                    paymentDate: 'December 5, 2024',
+                    status: 'Pending'
+                },
+                'October 2024': {
+                    totalEarnings: 'HK$3,840',
+                    daysWorked: 12,
+                    totalHours: 96,
+                    hourlyRate: 'HK$40',
+                    basePay: 'HK$3,840',
+                    performanceBonus: 'HK$150',
+                    attendanceBonus: 'HK$100',
+                    grossPay: 'HK$4,090',
+                    mpfContribution: '-HK$204',
+                    uniformDeposit: 'HK$0',
+                    totalDeductions: '-HK$204',
+                    netPay: 'HK$3,886',
+                    paymentDate: 'November 5, 2024',
+                    status: 'Paid'
+                },
+                'September 2024': {
+                    totalEarnings: 'HK$2,560',
+                    daysWorked: 8,
+                    totalHours: 64,
+                    hourlyRate: 'HK$40',
+                    basePay: 'HK$2,560',
+                    performanceBonus: 'HK$100',
+                    attendanceBonus: 'HK$0',
+                    grossPay: 'HK$2,660',
+                    mpfContribution: '-HK$133',
+                    uniformDeposit: '-HK$100',
+                    totalDeductions: '-HK$233',
+                    netPay: 'HK$2,427',
+                    paymentDate: 'October 5, 2024',
+                    status: 'Paid'
+                },
+                'August 2024': {
+                    totalEarnings: 'HK$1,920',
+                    daysWorked: 6,
+                    totalHours: 48,
+                    hourlyRate: 'HK$40',
+                    basePay: 'HK$1,920',
+                    performanceBonus: 'HK$50',
+                    attendanceBonus: 'HK$0',
+                    grossPay: 'HK$1,970',
+                    mpfContribution: '-HK$98',
+                    uniformDeposit: 'HK$0',
+                    totalDeductions: '-HK$98',
+                    netPay: 'HK$1,872',
+                    paymentDate: 'September 5, 2024',
+                    status: 'Paid'
+                }
+            };
+
+            const currentData = payslipData[selectedMonth];
+            const statusColor = currentData.status === 'Paid' ? 'text-green-600' : 'text-orange-600';
+            const statusBg = currentData.status === 'Paid' ? 'bg-green-50 border-green-200' : 'bg-orange-50 border-orange-200';
+
             const content = `
                 <div class="p-6">
                     <div class="flex items-center justify-between mb-4">
@@ -2276,24 +2350,35 @@ startxref
                         <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">✕</button>
                     </div>
                     
+                    <!-- Month Selection -->
+                    <div class="mb-6">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Select Month</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg bg-white" onchange="showPaySlip(this.value)">
+                            <option value="November 2024" ${selectedMonth === 'November 2024' ? 'selected' : ''}>November 2024</option>
+                            <option value="October 2024" ${selectedMonth === 'October 2024' ? 'selected' : ''}>October 2024</option>
+                            <option value="September 2024" ${selectedMonth === 'September 2024' ? 'selected' : ''}>September 2024</option>
+                            <option value="August 2024" ${selectedMonth === 'August 2024' ? 'selected' : ''}>August 2024</option>
+                        </select>
+                    </div>
+                    
                     <!-- Current Month Summary -->
                     <div class="bg-gradient-to-r from-green-600 to-blue-600 text-white rounded-xl p-4 mb-6">
                         <div class="text-center">
-                            <h3 class="text-lg font-bold mb-2">November 2024</h3>
-                            <div class="text-3xl font-bold mb-1">HK$4,800</div>
+                            <h3 class="text-lg font-bold mb-2">${selectedMonth}</h3>
+                            <div class="text-3xl font-bold mb-1">${currentData.totalEarnings}</div>
                             <div class="text-sm opacity-90">Total Earnings</div>
                         </div>
                         <div class="grid grid-cols-3 gap-4 mt-4 text-center">
                             <div>
-                                <div class="text-lg font-bold">15</div>
+                                <div class="text-lg font-bold">${currentData.daysWorked}</div>
                                 <div class="text-xs opacity-90">Days Worked</div>
                             </div>
                             <div>
-                                <div class="text-lg font-bold">120</div>
+                                <div class="text-lg font-bold">${currentData.totalHours}</div>
                                 <div class="text-xs opacity-90">Total Hours</div>
                             </div>
                             <div>
-                                <div class="text-lg font-bold">HK$40</div>
+                                <div class="text-lg font-bold">${currentData.hourlyRate}</div>
                                 <div class="text-xs opacity-90">Hourly Rate</div>
                             </div>
                         </div>
@@ -2304,21 +2389,21 @@ startxref
                         <h3 class="font-semibold text-gray-800 mb-4">Earnings Breakdown</h3>
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
-                                <span class="text-gray-600">Base Pay (120 hrs × HK$40)</span>
-                                <span class="font-medium">HK$4,800</span>
+                                <span class="text-gray-600">Base Pay (${currentData.totalHours} hrs × ${currentData.hourlyRate})</span>
+                                <span class="font-medium">${currentData.basePay}</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600">Performance Bonus</span>
-                                <span class="font-medium text-green-600">+HK$200</span>
+                                <span class="font-medium text-green-600">+${currentData.performanceBonus}</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600">Perfect Attendance Bonus</span>
-                                <span class="font-medium text-green-600">+HK$150</span>
+                                <span class="font-medium text-green-600">+${currentData.attendanceBonus}</span>
                             </div>
                             <hr class="border-gray-200">
                             <div class="flex justify-between items-center font-semibold">
                                 <span class="text-gray-800">Gross Pay</span>
-                                <span class="text-green-600">HK$5,150</span>
+                                <span class="text-green-600">${currentData.grossPay}</span>
                             </div>
                         </div>
                     </div>
@@ -2329,29 +2414,34 @@ startxref
                         <div class="space-y-3">
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600">MPF Contribution (5%)</span>
-                                <span class="font-medium text-red-600">-HK$257</span>
+                                <span class="font-medium text-red-600">${currentData.mpfContribution}</span>
                             </div>
+                            ${currentData.uniformDeposit !== 'HK$0' ? `
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600">Uniform Deposit</span>
-                                <span class="font-medium text-red-600">-HK$50</span>
-                            </div>
+                                <span class="font-medium text-red-600">${currentData.uniformDeposit}</span>
+                            </div>` : ''}
                             <hr class="border-gray-200">
                             <div class="flex justify-between items-center font-semibold">
                                 <span class="text-gray-800">Total Deductions</span>
-                                <span class="text-red-600">-HK$307</span>
+                                <span class="text-red-600">${currentData.totalDeductions}</span>
                             </div>
                         </div>
                     </div>
 
                     <!-- Net Pay -->
-                    <div class="bg-green-50 border border-green-200 rounded-xl p-4 mb-6">
+                    <div class="${statusBg} rounded-xl p-4 mb-6">
                         <div class="flex justify-between items-center">
                             <span class="text-lg font-semibold text-gray-800">Net Pay</span>
-                            <span class="text-2xl font-bold text-green-600">HK$4,843</span>
+                            <span class="text-2xl font-bold ${statusColor}">${currentData.netPay}</span>
                         </div>
                         <div class="mt-2 text-sm text-gray-600">
-                            <p>Payment Date: December 5, 2024</p>
+                            <p>Payment Date: ${currentData.paymentDate}</p>
                             <p>Payment Method: Bank Transfer</p>
+                            <div class="flex items-center mt-1">
+                                <span class="mr-2">Status:</span>
+                                <span class="font-medium ${statusColor}">${currentData.status}</span>
+                            </div>
                         </div>
                     </div>
 
@@ -2389,7 +2479,7 @@ startxref
 
                     <!-- Action Buttons -->
                     <div class="space-y-2">
-                        <button class="w-full bg-green-600 text-white py-3 rounded-lg font-medium" onclick="downloadPaySlip()">
+                        <button class="w-full bg-green-600 text-white py-3 rounded-lg font-medium" onclick="downloadPaySlip('${selectedMonth}')">
                             Download PDF
                         </button>
                         <button class="w-full bg-gray-100 text-gray-700 py-2 rounded-lg" onclick="closeModal()">
@@ -2960,5 +3050,5 @@ startxref
             }
         }
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96ddd5be75a6df6e',t:'MTc1NDk3OTI5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96ddee6746080fac',t:'MTc1NDk4MDMwMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
